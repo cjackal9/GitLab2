@@ -13,6 +13,16 @@ dependencies {
     testImplementation 'org.hamcrest:hamcrest-library:2.2'
 }
 
+task deployReports (type: Copy) {  
+    from 'src/main/html'
+    into 'build/reports'
+    from 'build/docs'
+    into 'build/reports/docs'
+    dependsOn 'javadoc'
+}
+
+
+
 test {  
     ignoreFailures = true 
     useJUnitPlatform()
