@@ -13,14 +13,14 @@ dependencies {
     testImplementation 'org.hamcrest:hamcrest-library:2.2'
 }
 
-task deployReports (type: Copy) {  
-    from 'src/main/html'
-    into 'build/reports'
-    from 'build/docs'
-    into 'build/reports/docs'
-    dependsOn 'javadoc'
-}
+task deployReports (dependsOn: javadoc, type: Copy) {  
+    from 'build/reports'
+    into  'src/main/html'
+    from 'build/reports/docs'
+    into 'build/docs'
 
+    
+}
 
 
 test {  
