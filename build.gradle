@@ -22,7 +22,7 @@ task reports (dependsOn: ['javadoc', 'check']) {
 task deployReports (dependsOn: javadoc, type: Copy) {  
     from 'build/reports'
     into  'reports/'
-    from 'build/reports/docs'
+    from 'build/reports/docs' 
     into 'docs/'
     
 }
