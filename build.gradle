@@ -9,23 +9,21 @@ repositories {
 }
 
 dependencies {
-      testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
-    testImplementation 'org.hamcrest:hamcrest-library:2.2'
+    testImplementation("junit:junit:4.12")  
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.5.2")
+}
+test {  
+    useJUnit()     
+}
+
+task reports (dependsOn: ['javadoc', 'check']) {
+    description 'Generate all reports for this project'
 }
 
 task deployReports (dependsOn: javadoc, type: Copy) {  
     from 'build/reports'
-    into  'src/main/html'
+    into  'reports/'
     from 'build/reports/docs'
-    into 'build/docs'
-
+    into 'docs/'
     
 }
-
-
-test {  
-    ignoreFailures = true 
-    useJUnitPlatform()
-}
-
-
